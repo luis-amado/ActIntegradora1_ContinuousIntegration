@@ -1,8 +1,8 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <vector>
 
 #include "parte1_1.h"
 #include "parte1_2.h"
@@ -11,7 +11,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     cout << "Parte 1:" << endl;
     part1_1("transmission1.txt", "mcode1.txt");
     part1_1("transmission1.txt", "mcode2.txt");
