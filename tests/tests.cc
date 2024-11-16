@@ -3,5 +3,5 @@
 #include "parte1_1.h"
 
 TEST_CASE("zAlg1") {
-    REQUIRE(ZAlg1("test", "fulltestfull") == {});
+    REQUIRE(ZAlg1("test", "fulltestfull") == vector<int>());
 }
