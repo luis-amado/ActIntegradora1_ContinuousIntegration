@@ -16,8 +16,8 @@ void longestSubstring(string s1, string s2, int& start, int& end) {
 
     for (int i = 1; i <= s2.length(); i++) {
         for (int j = 1; j <= s1.length(); j++) {
-            if (s2[i-1] == s1[j-1]) {
-                matrix[i][j] = matrix[i-1][j-1] + 1;
+            if (s2[i - 1] == s1[j - 1]) {
+                matrix[i][j] = matrix[i - 1][j - 1] + 1;
 
                 if (matrix[i][j] > maxLength) {
                     maxLength = matrix[i][j];
@@ -48,7 +48,7 @@ void part3(string file1, string file2) {
     cout << substringStart << ' ' << substringEnd << ' ';
 
     for (int i = substringStart; i <= substringEnd; i++) {
-        cout << file1Content[i-1];
+        cout << file1Content[i - 1];
     }
     cout << endl;
 }
