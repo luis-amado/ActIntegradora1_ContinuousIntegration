@@ -1,5 +1,5 @@
 add_library("LibParts")
-target_include_directories("LibParts" .)
+target_include_directories("LibParts" PUBLIC .)
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(
