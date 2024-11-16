@@ -3,5 +3,13 @@
 #include "parte1_1.h"
 
 TEST_CASE("zAlg1") {
-    REQUIRE(ZAlg1("test", "fulltestfull") == vector<int>());
+    vector<int> zAlgResult = ZAlg1("test", "fulltestfull");
+    int foundPos = -1;
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] == len) {
+            foundPos = i - len - 1;
+            break;
+        }
+    }
+    REQUIRE(foundPos == 4);
 }
