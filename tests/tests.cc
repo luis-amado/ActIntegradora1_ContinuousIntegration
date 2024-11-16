@@ -1,6 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "parte1_1.h"
+#include "parte3.h"
 
 TEST_CASE("zAlg1")
 {
@@ -16,4 +17,16 @@ TEST_CASE("zAlg1")
         }
     }
     REQUIRE(foundPos == 4);
+}
+
+TEST_CASE("LongestSubstring")
+{
+    string s1 = "thisisthefirststring";
+    string s2 = "thisstringisthesecond";
+
+    int start, end;
+    longestSubstring(s1, s2, start, end);
+
+    REQUIRE(start == 14);
+    REQUIRE(end == 19);
 }
