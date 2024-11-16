@@ -1,5 +1,5 @@
-add_library("LibParts" INTERFACE)
-target_include_directories("LibParts" INTERFACE .)
+add_library("LibParts" PUBLIC)
+target_include_directories("LibParts" PUBLIC .)
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(
