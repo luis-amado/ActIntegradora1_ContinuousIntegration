@@ -4,12 +4,7 @@ add_executable(${EXECUTABLE_NAME} ${APP_SOURCES})
 
 target_link_libraries(
     ${EXECUTABLE_NAME}
-    PRIVATE "LibFoo"
-            "LibBar"
-            nlohmann_json::nlohmann_json
-            fmt::fmt
-            spdlog::spdlog
-            cxxopts::cxxopts)
+    PRIVATE "LibParts")
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(

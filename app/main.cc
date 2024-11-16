@@ -1,93 +1,30 @@
-#include <filesystem>
-#include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <algorithm>
 
-#include <cxxopts.hpp>
-#include <fmt/format.h>
-#include <nlohmann/json.hpp>
-#include <spdlog/spdlog.h>
+#include "parte1_1.h"
+#include "parte1_2.h"
+#include "parte2.h"
+#include "parte3.h"
 
-#include "config.hpp"
-#include "foo.h"
+using namespace std;
 
-using json = nlohmann::json;
-namespace fs = std::filesystem;
+int main() {
+    cout << "Parte 1:" << endl;
+    part1_1("transmission1.txt", "mcode1.txt");
+    part1_1("transmission1.txt", "mcode2.txt");
+    part1_1("transmission1.txt", "mcode3.txt");
+    part1_2("transmission2.txt", "mcode1.txt");
+    part1_2("transmission2.txt", "mcode2.txt");
+    part1_2("transmission2.txt", "mcode3.txt");
 
-int main(int argc, char **argv)
-{
-    std::cout << "JSON: " << NLOHMANN_JSON_VERSION_MAJOR << "."
-              << NLOHMANN_JSON_VERSION_MINOR << "."
-              << NLOHMANN_JSON_VERSION_PATCH << '\n';
-    std::cout << "FMT: " << FMT_VERSION << '\n';
-    std::cout << "CXXOPTS: " << CXXOPTS__VERSION_MAJOR << "."
-              << CXXOPTS__VERSION_MINOR << "." << CXXOPTS__VERSION_PATCH
-              << '\n';
-    std::cout << "SPDLOG: " << SPDLOG_VER_MAJOR << "." << SPDLOG_VER_MINOR
-              << "." << SPDLOG_VER_PATCH << '\n';
-    std::cout << "\n\nUsage Example:\n";
+    cout << endl;
+    cout << "Parte 2:" << endl;
+    manacher("transmission1.txt");
+    manacher("transmission2.txt");
 
-    // Compiler Warning and clang tidy error
-    // std::int32_t i = 0;
-
-    // Adress Sanitizer should see this
-    // char x[10];
-    // x[11] = 1;
-
-    const auto welcome_message =
-        fmt::format("Welcome to {} v{}\n", project_name, project_version);
-    spdlog::info(welcome_message);
-
-    cxxopts::Options options(project_name.data(), welcome_message);
-
-    options.add_options("arguments")("h,help", "Print usage")(
-        "f,filename",
-        "File name",
-        cxxopts::value<std::string>())(
-        "v,verbose",
-        "Verbose output",
-        cxxopts::value<bool>()->default_value("false"));
-
-    auto result = options.parse(argc, argv);
-
-    if (argc == 1 || result.count("help"))
-    {
-        std::cout << options.help() << '\n';
-        return 0;
-    }
-
-    auto filename = std::string{};
-    auto verbose = false;
-
-    if (result.count("filename"))
-    {
-        filename = result["filename"].as<std::string>();
-    }
-    else
-    {
-        return 1;
-    }
-
-    verbose = result["verbose"].as<bool>();
-
-    if (verbose)
-    {
-        fmt::print("Opening file: {}\n", filename);
-    }
-
-    auto ifs = std::ifstream{filename};
-
-    if (!ifs.is_open())
-    {
-        return 1;
-    }
-
-    const auto parsed_data = json::parse(ifs);
-
-    if (verbose)
-    {
-        const auto name = parsed_data["name"];
-        fmt::print("Name: {}\n", name);
-    }
-
-    return 0;
+    cout << "Parte 3:" << endl;
+    part3("transmission1.txt", "transmission2.txt");
 }
