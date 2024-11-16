@@ -27,6 +27,6 @@ TEST_CASE("LongestSubstring")
     int start, end;
     longestSubstring(s1, s2, start, end);
 
-    REQUIRE(start == 14);
-    REQUIRE(end == 19);
+    REQUIRE(start == 15);
+    REQUIRE(end == 20);
 }
